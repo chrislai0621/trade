@@ -119,6 +119,7 @@ class EntrustedRunnable implements Runnable, IEntrustedJob<EntrustedOrder> {
      * @param limit   取回幾筆
      */
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public void updateBuyProcessor(EntrustedOrder request, Integer limit) {
 
         // update entrusted_order set processor= #processor
@@ -172,6 +173,7 @@ class EntrustedRunnable implements Runnable, IEntrustedJob<EntrustedOrder> {
      * status =2全部成交
      * @param buyData,sellData
      */
+    @Transactional(propagation = Propagation.MANDATORY)
     public boolean processData(EntrustedOrder buyData, List<EntrustedOrder> sellData) {
         return true;
     }
